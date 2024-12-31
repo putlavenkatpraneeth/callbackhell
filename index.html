@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Hell Example</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #74ebd5, #acb6e5);
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-left: 5px solid #4caf50;
+            background: #ffffff;
+            border-radius: 6px;
+            font-size: 1.1em;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .message:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            background: #4caf50;
+            color: #ffffff;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Callback Hell Example</h1>
+    <button onclick="startProcess()">Place the Order</button>
+    <div id="output"></div>
+
+    <script>
+        function startProcess() {
+            const output = document.getElementById("output");
+            output.innerHTML = ""; // Clear previous messages
+
+            // Adding the "Start" message
+            const startDiv = document.createElement("div");
+            startDiv.className = "message";
+            startDiv.innerText = "Start";
+            output.appendChild(startDiv);
+
+            setTimeout(() => {
+                // Adding "Step 1" message
+                const step1Div = document.createElement("div");
+                step1Div.className = "message";
+                step1Div.innerText = "Step 1: Place the Order!";
+                output.appendChild(step1Div);
+
+                setTimeout(() => {
+                    // Adding "Step 2" message
+                    const step2Div = document.createElement("div");
+                    step2Div.className = "message";
+                    step2Div.innerText = "Step 2: Preparing the Pizza...";
+                    output.appendChild(step2Div);
+
+                    setTimeout(() => {
+                        // Adding "Step 3" message
+                        const step3Div = document.createElement("div");
+                        step3Div.className = "message";
+                        step3Div.innerText = "Step 3: Baking the Pizza...";
+                        output.appendChild(step3Div);
+
+                        setTimeout(() => {
+                            // Adding "Step 4" message
+                            const step4Div = document.createElement("div");
+                            step4Div.className = "message";
+                            step4Div.innerText = "Step 4: Packing the Pizza...";
+                            output.appendChild(step4Div);
+
+                            setTimeout(() => {
+                                // Adding "All steps completed" message
+                                const completedDiv = document.createElement("div");
+                                completedDiv.className = "message";
+                                completedDiv.innerText = "Pizza DELIVERED!";
+                                output.appendChild(completedDiv);
+                            }, 1000);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
